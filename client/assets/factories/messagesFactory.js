@@ -3,7 +3,7 @@ app.factory('messagesFactory', ['$http', '$routeParams', function($http, $routeP
     var self = this;
     this.create = function(message, userId, callback) {
       $http.post(`/messages/${userId}`, message).then(function(res) {
-        callback();
+        self.index(callback);
       });
     };
     this.index = function(callback) {
@@ -12,10 +12,11 @@ app.factory('messagesFactory', ['$http', '$routeParams', function($http, $routeP
         callback(res.data);
       });
     };
-    this.createComment = function(message, userId) {
+    this.createComment = function(message, userId, callback) {
       console.log(message);
       $http.post(`/comments/${userId}`, message).then(function(res) {
         console.log(res);
+        self.index(callback);
       });
     };
   }
