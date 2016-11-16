@@ -7,13 +7,12 @@ app.factory('messagesFactory', ['$http', '$routeParams', function($http, $routeP
       });
     };
     this.index = function(callback) {
+      console.log('index');
       $http.get(`/messages`).then(function(res) {
-        console.log(res.data);
         callback(res.data);
       });
     };
     this.createComment = function(messageId, userId, comment, callback) {
-      console.log(comment);
       var data = {
         messageId: messageId,
         comment: comment.content
