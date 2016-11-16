@@ -17,8 +17,8 @@
         <p>by: {{comment._user.name}}</p>
       </div>
     </div>
-    <form ng-submit='wC.createComment(message)'>
-      <textarea name="name" rows="4" cols="40" ng-model='message.comment'></textarea>
+    <form ng-submit='wC.createComment(message._id, comment)'>
+      <textarea name="name" rows="4" cols="40" ng-model='comment.content'></textarea>
       <input type="submit" name="name" value="Comment">
     </form>
   </div>
