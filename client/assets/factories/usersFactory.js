@@ -6,10 +6,10 @@ app.factory('usersFactory', ['$http', '$location', '$routeParams', function($htt
         console.log(res.data);
         if (res.data.errors) {
           console.log(res.data);
-         callback(res.data.errors);
-       } else {
-         $location.url('/wall');
-       }
+          callback(res.data.errors);
+        } else {
+          $location.url('/wall');
+        }
       })
     };
     this.checkSess = function(callback) {

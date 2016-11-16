@@ -47,7 +47,11 @@ module.exports = (function() {
       }
     },
     logout: function(req, res) {
-      req.session.destroy();
+      req.session.destroy(function(err) {
+        if (err) {
+          res.json(err);
+        }
+      });
       res.redirect('/');
     }
   }

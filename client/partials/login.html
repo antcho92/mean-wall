@@ -1,6 +1,11 @@
 <h3>Enter a username to continue:</h3>
 <span class='errors'>{{uC.errors.name.message}}</span>
-<form ng-submit='uC.login()'>
-  <input type="text" ng-model='uC.user.name' value="">
-  <input type="submit" name="name" value="Enter">
+<form ng-submit='uC.login()' name='userForm'>
+  <input type="text" name="name" ng-model='uC.user.name' value="" ng-pattern='/^\w+$/' ng-minlength='3' required>
+  <input type="submit" value="Enter">
 </form>
+<div ng-messages='userForm.name.$error' class='errors'>
+  <p ng-message='minlength'>The user name is too short</p>
+  <p ng-message='required'>User name is required</p>
+  <p ng-message='pattern'>Invalid name</p>
+</div>
