@@ -1,0 +1,25 @@
+<h1>The Wall</h1>
+<a href="/users/logout">Logout</a>
+<form ng-submit='wC.create()'>
+  <textarea name="name" rows="8" cols="40" ng-model='wC.message.content'></textarea>
+  <input type="submit" name="name" value="Post message">
+</form>
+
+<div class="messages">
+  <h2>Messages:</h2>
+  <div class="message" ng-repeat='message in wC.messages track by $index'>
+    <p>Message: {{message.content}}</p>
+    <p>by: {{message._user.name}}</p>
+    <div class="class=comments">
+      <h3>Comments:</h3>
+      <div class="comment" ng-repeat='comment in message.comments'>
+        <p>Comment: {{comment.content}}</p>
+        <p>by: {{comment._user.name}}</p>
+      </div>
+    </div>
+    <form ng-submit='wC.createComment(message)'>
+      <textarea name="name" rows="4" cols="40" ng-model='message.comment'></textarea>
+      <input type="submit" name="name" value="Comment">
+    </form>
+  </div>
+</div>
