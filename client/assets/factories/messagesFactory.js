@@ -12,9 +12,13 @@ app.factory('messagesFactory', ['$http', '$routeParams', function($http, $routeP
         callback(res.data);
       });
     };
-    this.createComment = function(message, userId, callback) {
-      console.log(message);
-      $http.post(`/comments/${userId}`, message).then(function(res) {
+    this.createComment = function(messageId, userId, comment, callback) {
+      console.log(comment);
+      var data = {
+        messageId: messageId,
+        comment: comment.content
+      }
+      $http.post(`/comments/${userId}`, data).then(function(res) {
         console.log(res);
         self.index(callback);
       });

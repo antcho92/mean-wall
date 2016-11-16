@@ -12,9 +12,7 @@ app.controller('wallController', ['$scope', 'usersFactory', 'messagesFactory', f
     mF.create(this.message, this.userId, refreshMessages);
   };
   this.createComment = function(messageId, comment) {
-    console.log(messageId);
-    console.log(comment);
-    // mF.createComment(message, this.userId, refreshMessages);
+    mF.createComment(messageId, this.userId, comment, refreshMessages);
   }
   mF.index(refreshMessages);
 }])

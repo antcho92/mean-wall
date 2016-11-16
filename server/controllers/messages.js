@@ -50,7 +50,7 @@ module.exports = (function() {
     },
     createComment: function(req, res) {
       User.findOne({_id: req.params.id}, function(err, user) {
-        Message.findOne({_id: req.body._id}, function(err, message) {
+        Message.findOne({_id: req.body.messageId}, function(err, message) {
           console.log(message);
           var comment = new Comment({content: req.body.comment});
           console.log(comment);
